@@ -7,7 +7,7 @@
 Summary:	GObject bidings to libudev
 Name:		libgudev
 Version:	219
-Release:	16
+Release:	17
 License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
