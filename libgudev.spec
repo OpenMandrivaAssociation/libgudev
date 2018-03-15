@@ -7,7 +7,7 @@
 Summary:	GObject bidings to libudev
 Name:		libgudev
 Version:	219
-Release:	17
+Release:	18
 License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
@@ -17,13 +17,6 @@ BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-
-%track
-prog %{name} = {
-	url = https://download.gnome.org/sources/libgudev/(__VER__)
-	regex = "%{name}-(__VER__)\.tar\.xz"
-	version = %{version}
-}
 
 %description
 This library provides GObject bindings for libudev.
