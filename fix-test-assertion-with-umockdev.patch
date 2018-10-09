@@ -1,0 +1,42 @@
+From bf8664a028d8cbc55f9dbc65fef926e2119b9579 Mon Sep 17 00:00:00 2001
+From: James Clarke <jrtc27@jrtc27.com>
+Date: Tue, 23 Jan 2018 21:03:51 +0000
+Subject: tests: Fix test assertion with umockdev
+
+Since 0.9.4, rather than checking for libumockdev-preload being in
+LD_PRELOAD, umockdev_in_mock_environment now checks whether /sys is
+being redirected. This only occurs when $UMOCKDEV_DIR is set, which
+happens inside umockdev_testbed_new, so the assertion must come after
+this call.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=792845
+---
+ tests/test-enumerator-filter.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test-enumerator-filter.c b/tests/test-enumerator-filter.c
+index 9c97903..dfcdba2 100644
+--- a/tests/test-enumerator-filter.c
++++ b/tests/test-enumerator-filter.c
+@@ -37,6 +37,9 @@ test_enumerator_filter (void)
+ 	/* create test bed */
+ 	UMockdevTestbed *testbed = umockdev_testbed_new ();
+ 
++	/* Relies on a test bed having been set up */
++	g_assert (umockdev_in_mock_environment ());
++
+ 	/* Add 2 devices in the USB subsystem, and one in the DRM subsystem */
+ 	umockdev_testbed_add_device (testbed, "usb", "dev1", NULL,
+ 				     "idVendor", "0815", "idProduct", "AFFE", NULL,
+@@ -74,8 +77,6 @@ int main(int argc, char **argv)
+ 	setlocale (LC_ALL, NULL);
+ 	g_test_init (&argc, &argv, NULL);
+ 
+-	g_assert (umockdev_in_mock_environment ());
+-
+ 	g_test_add_func ("/gudev/enumerator_filter", test_enumerator_filter);
+ 
+ 	return g_test_run ();
+-- 
+cgit v0.12
+

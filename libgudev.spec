@@ -12,6 +12,7 @@ License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
 Source0:	https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
+Patch0:		https://git.gnome.org/browse/libgudev/patch/?id=bf8664a028d8cbc55f9dbc65fef926e2119b9579#/fix-test-assertion-with-umockdev.patch
 BuildRequires:	pkgconfig(libudev) >= 199
 BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
@@ -29,7 +30,7 @@ Summary:	Libraries for adding libudev support to applications that use glib
 Group:		System/Libraries
 Provides:	libgudev = %{EVRD}
 
-%description -n	%{libgudev}
+%description -n %{libgudev}
 This package contains the libraries that make it easier to use libudev
 functionality from applications that use glib.
 
@@ -47,7 +48,7 @@ Summary:	Header files for adding libudev support to applications that use glib
 Group:		Development/C
 Requires:	%{libgudev} = %{EVRD}
 
-%description -n	%{libgudev_devel}
+%description -n %{libgudev_devel}
 This package contains the header and pkg-config files for developing
 glib-based applications using libudev functionality.
 
@@ -58,7 +59,7 @@ glib-based applications using libudev functionality.
 %configure \
     --enable-instrospection=yes
 
-%make_build
+%make_build V=1
 
 %install
 %make_install
