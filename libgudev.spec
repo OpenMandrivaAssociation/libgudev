@@ -6,8 +6,8 @@
 
 Summary:	GObject bidings to libudev
 Name:		libgudev
-Version:	219
-Release:	19
+Version:	232
+Release:	1
 License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
@@ -51,16 +51,16 @@ This package contains the header and pkg-config files for developing
 glib-based applications using libudev functionality.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
     --enable-instrospection=yes
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libgudev}
 %{_libdir}/libgudev-%{gudev_api}.so.%{gudev_major}*
