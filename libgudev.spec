@@ -59,7 +59,7 @@ glib-based applications using libudev functionality.
 %configure \
     --enable-instrospection=yes
 
-%make_build V=1
+%make_build -j1
 
 %install
 %make_install
