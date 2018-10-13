@@ -58,6 +58,7 @@ glib-based applications using libudev functionality.
 
 %build
 %configure \
+    --disable-umockdev \
     --enable-instrospection=yes
 
 %make_build -j1
