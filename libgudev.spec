@@ -6,14 +6,13 @@
 
 Summary:	GObject bidings to libudev
 Name:		libgudev
-Version:	233
+Version:	234
 Release:	1
 License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
 Source0:	https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
-#https://git.gnome.org/browse/libgudev/patch/?id=bf8664a028d8cbc55f9dbc65fef926e2119b9579#/fix-test-assertion-with-umockdev.patch
-#Patch0:		fix-test-assertion-with-umockdev.patch
+
 BuildRequires:	pkgconfig(libudev) >= 199
 BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
