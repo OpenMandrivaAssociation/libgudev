@@ -6,13 +6,14 @@
 
 Summary:	GObject bidings to libudev
 Name:		libgudev
-Version:	234
+Version:	236
 Release:	1
 License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
 Source0:	https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
 
+BuildRequires:  meson
 BuildRequires:	pkgconfig(libudev) >= 199
 BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
@@ -56,14 +57,12 @@ glib-based applications using libudev functionality.
 %autosetup -p1
 
 %build
-%configure \
-    --disable-umockdev \
-    --enable-instrospection=yes
+%meson
 
-%make_build -j1
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files -n %{libgudev}
 %{_libdir}/libgudev-%{gudev_api}.so.%{gudev_major}*
