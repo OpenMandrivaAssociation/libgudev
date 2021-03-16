@@ -74,6 +74,8 @@ glib-based applications using libudev functionality.
 %{_includedir}/gudev-%{gudev_api}
 %{_datadir}/gir-1.0/GUdev-%{gudev_api}.gir
 %{_libdir}/pkgconfig/gudev-%{gudev_api}.pc
+%{_datadir}/vala/vapi/gudev-1.0.deps
+%{_datadir}/vala/vapi/gudev-1.0.vapi
 
 %files -n %{girgudev}
 %{_libdir}/girepository-1.0/GUdev-%{gudev_api}.typelib
