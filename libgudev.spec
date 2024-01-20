@@ -7,7 +7,7 @@
 Summary:	GObject bidings to libudev
 Name:		libgudev
 Version:	238
-Release:	2
+Release:	3
 License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
@@ -20,7 +20,6 @@ BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -57,10 +56,12 @@ glib-based applications using libudev functionality.
 
 %prep
 %autosetup -p1
+# tests require umockdev, which in turn requires libgudev, causing a nasty
+# circular build dependency -- so disable tests
+%meson \
+	-Dtests=disabled
 
 %build
-%meson
-
 %meson_build
 
 %install
