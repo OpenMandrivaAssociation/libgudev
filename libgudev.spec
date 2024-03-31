@@ -12,6 +12,7 @@ License:	MIT
 Group:		System/Libraries
 URL:		https://wiki.gnome.org/Projects/libgudev
 Source0:	https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
+Patch0:		https://gitlab.gnome.org/GNOME/libgudev/-/merge_requests/30.patch
 
 BuildRequires:  cmake
 BuildRequires:  meson
